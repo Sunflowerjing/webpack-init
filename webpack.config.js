@@ -52,6 +52,11 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            // 处理css等样式文件
+            {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader"]
             }
         ]
     }
