@@ -1,4 +1,4 @@
-# webpack 学习
+# webpack从0到1-开始
 
 ## 目的
 1. 了解webpack打包
