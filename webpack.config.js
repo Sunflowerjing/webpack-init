@@ -57,7 +57,22 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: ["style-loader", "css-loader"]
-            }
+            },
+            // 处理sass
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    "postcss-loader",   // 因为这里处理的是css文件，所以要放在sass-loader的上面
+                    "sass-loader"  // 将 Sass 编译成 CSS，默认使用 Node Sass
+                ]
+            },
+            // 处理less
+            {
+                test: /\.less$/,
+                use: ["style-loader", "css-loader", "less-loader"]
+            },
         ]
     }
 }
