@@ -2,11 +2,16 @@
 const path = require('path');
 
 module.exports = {
+    mode: 'development',
+    devtool: 'inline-source-map',
     // 定义入口文件，告诉webpack 我要打包什么
-    entry: './src/index.js',
+    entry: "./src/index.js",
     // 定义好输出文件，告诉 webpack 打包好的文件叫啥，给我放到哪里
     output: {
-        filename:'jing.js',
+        publicPath:'/',
+        filename: 'jing.js',
+        // filename: '[name].bundle.js',
+        // filename: '[name].bundle.[hash].js',
         path: path.resolve(__dirname, 'dist'),
     },
     // 使用loaders的列表
