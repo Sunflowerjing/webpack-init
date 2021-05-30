@@ -8,5 +8,34 @@ module.exports = {
     output: {
         filename:'jing.js',
         path: path.resolve(__dirname, 'dist'),
+    },
+    // 使用loaders的列表
+    module: {
+        // 定义规则
+        rules: [
+            {
+                // 这是一个正则，所有以js结尾的文件都要给我过这里！！
+                test: /\.js$/,
+                // 除了node_modules下的（真香）
+                exclude: /(node_modules|bower_components)/,
+                // 使用babel-loader，options是它的一些配置项
+                use: {
+                    loader: "babel-loader",
+                    // "@babel/preset-env"这个东西是babel提供给自己用的插件
+                    options: {
+                        presets: [
+                            [
+                                "@babel/preset-env",
+                                {
+                                    // 添加babel-polyfill
+                                    useBuiltIns: "usage",
+                                    corejs: { version: 3, proposals: true }
+                                }
+                            ]
+                        ]
+                    }
+                }
+            }
+        ]
     }
 }
